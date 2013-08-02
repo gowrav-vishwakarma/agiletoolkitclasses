@@ -1,25 +1,18 @@
 <?php
 		/**
-												Example of View 
+												Example of Grid 
 										'********************************'
 								Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
 		*//*
 		=================================================================================================
-		Qus. We will need all customer list on DropDown box and after Select DropDown Record We Will Get 
-			All projects of selected customer in a special view ?
-		Ans.	
-			Create 2 View its required ******** 
-			    lib/View/*.php
-			1.View_ProjectList.php 
-			2.Project.php
-		create 1 template 
-			templete/default/view/project.html
 		=================================================================================================
 		*/
 class page_chapter21 extends Page{
 
 	function page_index(){
 		// parent::init();
+
+       	$this->add('Class_PagePlay')->play(21);
 
 		// Add New Fields Grid & Get Value ***********
 
@@ -41,7 +34,7 @@ class page_chapter21 extends Page{
 
 
 		// Add New Column *****************
-		$g->addColumn('Button','Hi');
+		$g->addColumn('Button','Hello World');
 
 		// Set NoRecordMessage ************
 		$g->setNoRecords("Recotd Nahi Mila ");

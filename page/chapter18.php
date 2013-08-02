@@ -1,30 +1,23 @@
 <?php
 		/**
-												Example of View 
+							Example of Update Records Dynamacally Use With Model Feature  
 										'********************************'
 								Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
 		*//*
 		=================================================================================================
-		Qus. We will need all customer list on DropDown box and after Select DropDown Record We Will Get 
-			All projects of selected customer in a special view ?
-		Ans.	
-			Create 2 View its required ******** 
-			    lib/View/*.php
-			1.View_ProjectList.php 
-			2.Project.php
-		create 1 template 
-			templete/default/view/project.html
 		=================================================================================================
 		*/
 class page_chapter18 extends Page{
 	function init(){
 		parent::init();
 
-
+       	$this->add('Class_PagePlay')->play(18);
 
 		// Update Records Dynamacally Use With Model Feature **************
 		// ****************************************************************
-
+	
+	/****
+	
 		$proj=$this->add('Model_Project');
 		$proj->addCondition('name','like','%2%');
 
@@ -45,5 +38,9 @@ class page_chapter18 extends Page{
 				if($i==3) break;
 			}		
 		}
+	
+	****/
+
+        $this->add('View')->setHtml('<a href="?page=chapter18"> See Source Code Page: Chapter18.php </a> ');
 	}
 }

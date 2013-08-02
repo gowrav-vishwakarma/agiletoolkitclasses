@@ -1,0 +1,29 @@
+       =================================================================================================
+        Step.1 => download agile toolkit latest version / sublime editor / lump apche / ubunto OS / mySql workbench
+        		etc ...
+
+        Step.2 => config index.php file 
+        		include 'atk4/loader.php';
+				$api=new Frontend('agileLearn');  /***** given name to your own unique api *****
+				$api->main();
+		
+		Step.3 => config lib/Frontend.php
+				@1. $this->dbConnect(); /****** UnComment for run database connection to all pages 
+				@2.     $this->add('BasicAuth')
+				            ->allow('demo','demo')
+            			// use check() and allowPage for white-list based auth checking
+            			//->check()
+            			;
+				@3.         $this->add('Menu',null,'Menu')   // Front Menu Option Given By Agile ToolKit
+				            ->addMenuItem('index','Welcome') // @parm ( page_name , menu_lable )  
+            				->addMenuItem('logout','Logout')
+        				     ;
+				Each Page Have Two Functions 
+
+				// $this->getTitle();
+				// $this->recursiveRender();
+
+		Step.4 => Namining Convection
+				FolderName_SubFolderName_ClassName
+	        =================================================================================================
+ 

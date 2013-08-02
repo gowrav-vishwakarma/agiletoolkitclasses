@@ -1,19 +1,12 @@
 <?php 
 		/**
-												Example of View 
+									Example of Save in Model With Programming 
 										'********************************'
 								Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
 		*//*
 		=================================================================================================
-		Qus. We will need all customer list on DropDown box and after Select DropDown Record We Will Get 
-			All projects of selected customer in a special view ?
+		Qus. save data with programming ?
 		Ans.	
-			Create 2 View its required ******** 
-			    lib/View/*.php
-			1.View_ProjectList.php 
-			2.Project.php
-		create 1 template 
-			templete/default/view/project.html
 		=================================================================================================
 		*/
 class page_chapter9 extends Page{
@@ -21,8 +14,9 @@ class page_chapter9 extends Page{
 	function init(){
 		parent::init();
 
-				// Insert Data With Create Own Form ******
+        $this->add('Class_PagePlay')->play(9);
 
+		// Insert Data With Create Own Form ******
 		$form = $this->add('Form');
 		$form->addField('dropdown','customer','Customer')->ValidateNotNull('Customer Name Not Selected !')->setEmptyText("Any Customer")->setModel('Customer');
 		$form->addField('line','name','Project')->ValidateNotNull('Project Name is Not Empty !');

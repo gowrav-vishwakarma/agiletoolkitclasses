@@ -1,19 +1,17 @@
 <?php
 		/**
-												Example of View 
+												Example of CRUD / Grid Expander 
 										'********************************'
 								Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
 		*//*
 		=================================================================================================
-		Qus. We will need all customer list on DropDown box and after Select DropDown Record We Will Get 
-			All projects of selected customer in a special view ?
+		Qus. Grid Function's 
 		Ans.	
-			Create 2 View its required ******** 
-			    lib/View/*.php
-			1.View_ProjectList.php 
-			2.Project.php
-		create 1 template 
-			templete/default/view/project.html
+			Exapnder Same Class Function for Create Page
+			reuired:
+			1. init() change name page_index()
+			2.  
+
 		=================================================================================================
 		*/
 class page_chapter11 extends Page{
@@ -21,20 +19,22 @@ class page_chapter11 extends Page{
 	function page_index(){
 
 	
-				// For Expander Requires Bock This Content Change The Name of Init() into page_index()
+		/* 
+		For Expander Requires Bock This Content Change
+		The Name of Init() into page_index()
+		*/
+
 		// parent::init();
 
+	    $this->add('Class_PagePlay')->play(11);
+
 		//Adding CRUD
-
-		$btn=$this->add('Button')->set('Count CheckBox');
-		
-		$crud=$this->add('CRUD',array('allow_del'=>false));
+		$crud=$this->add('CRUD');
 
 
-		
+		$crud->setModel('Model_Project');
 
-		$crud->setModel('Model_Project',array("name"),array("name","progress"));
-
+		/**** Auto Create Crud With Expander ****/
 		// $crud->addRef("Complaints");
 
 		$crud->grid->addQuickSearch(array("name"));

@@ -22,6 +22,7 @@ class page_chapter26 extends Page {
 	function init(){
 		parent::init();
 
+	  	$this->add('Class_PagePlay')->play(26);
 		
 		/***** create New Form *****/
 		$form =$this->add('Form'); /***** add Form *****/ 
@@ -33,7 +34,6 @@ class page_chapter26 extends Page {
 		
 		/***** add model customer *****/
 		$customer=$this->add('Model_Customer');
-
 
 		/***** check customer id selected or not ( get from form submission ) ***** GOTO->LINE(45) *****/
 		if($_GET['customer']){

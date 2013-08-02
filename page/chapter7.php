@@ -5,7 +5,7 @@
 								Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
 		*//*
 		=================================================================================================
-		Qus. 
+		Qus. Menu Items ? 
 		Ans.	
 		
 		=================================================================================================
@@ -17,14 +17,16 @@ class page_chapter7 extends Page{
 
 		parent::init();
 
-        $this->add('H1')->set('Create Your Own Menu');
-        
-        $btn2=$this->add('Button')->setLabel('Next Chapter8');
-        $btn2->js('click')->univ()->redirect($this->api->url('chapter8'));
+	    $this->add('Class_PagePlay')->play(7);
+    
 
-		/*
+ 		/*
 			Menu Create and SubMenu
 		*/
+
+       /***** break line ******/
+        $this->add('HtmlElement')->setHtml('Urls Menus');
+
 		$menu=$this->add('Menu');
          
         $menu->addMenuItem('chapter8','Chapter 8'); // @param ( 'page_name' , 'menu_caption' ) 

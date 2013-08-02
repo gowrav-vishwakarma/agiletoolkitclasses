@@ -1,0 +1,35 @@
+<?$Content?>
+
+        ================================================================================================= <br>
+        Step.1 => <strong>download agile toolkit latest version / sublime editor / lump apche / ubunto OS / mySql workbench
+        		etc ... </strong>
+<br>
+        Step.2 => <strong> config index.php file </strong> 
+        		<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; include 'atk4/loader.php';
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$api=new Frontend('agileLearn');  /***** given name to your own unique api *****
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$api->main();
+		<br>
+		Step.3 => <strong> config lib/Frontend.php</strong>
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@1. $this->dbConnect(); /****** UnComment for run database connection to all pages 
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@2.     $this->add('BasicAuth')
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            ->allow('demo','demo')
+            	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		// use check() and allowPage for white-list based auth checking
+            	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		//->check()
+            	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		;
+				
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@3.         $this->add('Menu',null,'Menu')   // Front Menu Option Given By Agile ToolKit
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            ->addMenuItem('index','Welcome') // @parm ( page_name , menu_lable )  
+            	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			->addMenuItem('logout','Logout')
+        		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		     ;
+
+				Each Page Have Two Functions 
+
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// $this->getTitle();
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// $this->recursiveRender();
+
+<br>
+		Step.4 => <strong>Namining Convection</strong>
+			<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+			<strong>FolderName_SubFolderName_ClassName </strong>
+<br>
+	        =================================================================================================

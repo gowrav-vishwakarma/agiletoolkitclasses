@@ -1,6 +1,6 @@
 <?php
 /**
-                                            Agile toolkit Configration 
+                                            Agile toolkit Index Page 
                                         '********************************'
                                 Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
         *//*
@@ -41,30 +41,33 @@ class page_index extends Page{
 	function init(){
 		parent::init();
 
-		/***** add H1 for title *****/			
-		$this->add('H1')->set('Xavoc International -> Swastik E-Tech');
+		/***** add H1 for title *****/
+
+		$this->add('H1')->setHtml('Xavoc International <=> Swastik E-Tech');
 
 		/***** creater profile *****/			
 		$this->add('View')->setHtml('Created by : Rahul Vishnoi <a href="mailto:cool_vishnoi@yahoo.co.in">cool_vishnoi@yahoo.co.in</a>');	
 
+		/***** Move on Next Page *****/			
+        $btnNext=$this->add('Button')->setLabel('Next : Agile Configration');
+        $btnNext->js('click')->univ()->redirect($this->api->url('configration'));
+
+        /***** break line ******/
+        $this->add('HtmlElement')->setHtml('</br>');
 
 		/***** blanck view object*****/			
 		$v=$this->add('View')->set('');
 
 		/***** get & check value by js() and print hellow world *****/			
-        if($_GET['Demo']) $msg=$v->add('View_Info')->set('hellow world')->addClose()->addIcon(null);
+        if($_GET['Demo']) $msg=$v->add('View_Info')->set('hellow world : ' . rand(10,999))->addClose()->addIcon(null);
 
 		/***** add Button with caption *****/			
-        $btn_demo=$this->add('Button')->set('Hello World');
+        $btn_demo=$this->add('Button')->set('Demo Hello World');
 
 		/***** button ckick run java script sent value and show popup message *****/			
         $btn_demo->js('click',$v->js()->reload(array('Demo'=>1)));
 
-        /***** break line ******/
-        $this->add('HtmlElement')->setHtml('</br>');
 
-        $btn2=$this->add('Button')->setLabel('Start Chapter1');
-        $btn2->js('click')->univ()->redirect($this->api->url('chapter1'));
 
 	}
 }

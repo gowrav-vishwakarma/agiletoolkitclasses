@@ -49,36 +49,18 @@ class Frontend extends ApiFrontend {
 
         // If you are using a complex menu, you can re-define
         // it and place in a separate class
-        $this->add('Menu',null,'Menu')
+        $m=$this->add('Menu',null,'Menu')
             ->addMenuItem('index','Welcome')        
-            ->addMenuItem('chapter1','chapter 1')        
-            ->addMenuItem('chapter2','chapter 2')        
-            ->addMenuItem('chapter3','chapter 3')        
-            ->addMenuItem('chapter4','chapter 4')        
-            ->addMenuItem('chapter5','chapter 5')        
-            ->addMenuItem('chapter6','chapter 6')        
-            ->addMenuItem('chapter7','chapter 7')        
-            ->addMenuItem('chapter8','chapter 8')        
-            ->addMenuItem('chapter9','chapter 9')        
-            ->addMenuItem('chapter10','chapter 10')        
-            ->addMenuItem('chapter11','chapter 11')        
-            ->addMenuItem('chapter12','chapter 12')        
-            ->addMenuItem('chapter13','chapter 13')        
-            ->addMenuItem('chapter14','chapter 14')        
-            ->addMenuItem('chapter15','chapter 15')        
-            ->addMenuItem('chapter16','chapter 16')        
-            ->addMenuItem('chapter17','chapter 17')        
-            ->addMenuItem('chapter18','chapter 18')        
-            ->addMenuItem('chapter19','chapter 19')        
-            ->addMenuItem('chapter20','chapter 20')        
-            ->addMenuItem('chapter21','chapter 21')        
-            ->addMenuItem('chapter22','chapter 22')        
-            ->addMenuItem('chapter23','chapter 23')        
-            ->addMenuItem('chapter24','chapter 24')        
-            ->addMenuItem('chapter25','chapter 25')        
-            ->addMenuItem('chapter26','chapter 26')        
-            ->addMenuItem('chapter27','chapter 27')       
-            ;
+            ->addMenuItem('configration','Configration')        
+            ->addMenuItem('chapterIndex','Chapter Index');        
+            // ->addMenuItem('chapter1','Chapter 1')        
+
+        // ****** Generate Menu Automatically ******* //    
+        $title_array=$this->add('Class_Title')->title_array();
+        for($row=1;$row<=count($title_array);$row++){    
+            $m->addMenuItem('chapter' . $row,'Chapter ' . $row);    
+        }       
+            
 
         $this->addLayout('UserMenu');
     }

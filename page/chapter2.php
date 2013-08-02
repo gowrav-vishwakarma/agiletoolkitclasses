@@ -15,10 +15,7 @@ class page_chapter2 extends Page {
     function init(){
         parent::init();
     
-        $this->add('H1')->set('Tabs');
-
-        $btn2=$this->add('Button')->setLabel('Next Chapter3');
-        $btn2->js('click')->univ()->redirect($this->api->url('chapter3'));
+        $this->add('Class_PagePlay')->play(2);
 
         /***** add tab on page with object *****/
     	$tab = $this->add('Tabs');

@@ -23,7 +23,8 @@ class page_chapter27 extends Page{
 	function init(){
 		parent::init();
 
-		
+       	$this->add('Class_PagePlay')->play(27);
+
 
 		// $customer = $this->add('Model_Customer');
 

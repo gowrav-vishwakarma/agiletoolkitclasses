@@ -1,6 +1,6 @@
 <?php
 		/**
-										Example of Own Class Tag Programme
+								 Example of Own Class Programme Calling Function
 										'********************************'
 								Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
 		*//*
@@ -17,11 +17,7 @@ class page_chapter6 extends Page{
 
 		parent::init();
 
-        $this->add('H1')->set('Create Your Own Class Example Div Class in lib/Div.php');
-        
-        $btn2=$this->add('Button')->setLabel('Next Chapter7');
-        $btn2->js('click')->univ()->redirect($this->api->url('chapter7'));
-			
+        $this->add('Class_PagePlay')->play(6);
 
         /*======================================
             Class Demo Programe
@@ -30,6 +26,8 @@ class page_chapter6 extends Page{
         =======================================*/
 
 		$div_sample= $this->add('Div');
+
+		$div_sample= $this->add('Class_Div2');
 
 		/*======================================
         	On Every Refresh Get A New Number        	  

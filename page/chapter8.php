@@ -10,7 +10,7 @@
 
 			create Model on "lib/Model/Model_Name.php" model structure Given That
 			create 4 tables Model "Customer->Project->Complaints->Follows"
-		
+			
 		=================================================================================================
 		*/
 
@@ -20,14 +20,13 @@ class page_chapter8 extends Page{
 
 		parent::init();
 
-		$this->add('H1')->set('Create Model "lib/Model/Model_Name.php"');
-        
-        $btn2=$this->add('Button')->setLabel('Next Chapter9');
-        $btn2->js('click')->univ()->redirect($this->api->url('chapter9'));
-	
-	
+        $this->add('Class_PagePlay')->play(8);
+    	
+       
 		/***** create model object ******/
-		$model = $this->add('Model_Customer');
+		$model = $this->add('Model_Customer')
+		//->debug() 
+		;
 
 		
 		/***** read customer Name Method ******/
@@ -41,13 +40,13 @@ class page_chapter8 extends Page{
 		/***** read customer Name Method 2 *****/
 
 		/***** get record where id='2' *****/
-		$model->load(2); 
+		// $model->load(2); 
 
 		/***** load any one row if exists data in table ******/
 		$model->loadAny(); 
 		
 		/***** if can't find data it will be not throw exception *****/
-		$model->tryLoad(5); 
+		// $model->tryLoad(5); 
 
 		/***** if can't find data it will be not throw exception *****/
 		$model->tryLoadAny(); 
@@ -107,8 +106,8 @@ class page_chapter8 extends Page{
 		$crud->addFrame('Frame',array('view_class'=>'Grid'));
 
 		$crud2=$crud->addRef(
-			'Project', 						/***** automatically add expander Project(Model) *****/
-			array('view_class'=>'Grid')
+			'Project' 						/***** automatically add expander Project(Model) *****/
+			,array('view_class'=>'Grid')
 			);
 
 		/***** mannually add crud expander ******/
@@ -120,6 +119,7 @@ class page_chapter8 extends Page{
 
 	}
 
+	/*** Create New Page For Expander ***/
 	function page_msgs(){
 		/***** that page show prpoerly 
 			reqired init() change into -> page_index()  

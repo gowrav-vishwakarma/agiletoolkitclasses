@@ -1,25 +1,18 @@
 <?php
 		/**
-												Example of View 
+									   Example of User Authentication System 
 										'********************************'
 								Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
 		*//*
 		=================================================================================================
-		Qus. We will need all customer list on DropDown box and after Select DropDown Record We Will Get 
-			All projects of selected customer in a special view ?
-		Ans.	
-			Create 2 View its required ******** 
-			    lib/View/*.php
-			1.View_ProjectList.php 
-			2.Project.php
-		create 1 template 
-			templete/default/view/project.html
 		=================================================================================================
 		*/
 class page_chapter25 extends Page {
 
 	function init(){
 		parent::init();
+
+       	$this->add('Class_PagePlay')->play(25);
 
 
 		// User Authentication System *******************
@@ -29,8 +22,24 @@ class page_chapter25 extends Page {
    //  	$auth->usePasswordEncryption();
    //  	$auth->check();		
 	
-		$this->add('Auth')->allow('root','root')->check();
+		// $this->add('Auth')
+		// 	->allow('123','123')
+		// 	->check();
 
+
+		$this->add('BasicAuth')
+			->allow('123','123')
+			->check();
+
+
+		
+
+
+		$this->add('View')->set('Say Hello World !');
+
+		$btn=$this->add('Menu')->addMenuItem('logout');
+
+		// $btn->js('click')->univ()->redirect($this->api->url('chapter25'));
 
 	}
 }

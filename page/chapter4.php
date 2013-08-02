@@ -36,10 +36,7 @@ class page_chapter4 extends Page{
 	function init(){
 		parent::init();
 
-        $this->add('H1')->set('Column Class Options');
-
-        $btn2=$this->add('Button')->setLabel('Next Chapter5');
-        $btn2->js('click')->univ()->redirect($this->api->url('chapter5'));
+        $this->add('Class_PagePlay')->play(4,'Columns');
         
         /**** column divided in 1 column *****/
         $cols1=$this->add('Columns');

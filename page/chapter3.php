@@ -14,7 +14,8 @@ class page_chapter3 extends Page {
     function init(){
         parent::init();
 
-        $this->add('H1')->set('Button Class Options');
+        $this->add('Class_PagePlay')->play(3);
+
 
         /*======================================
                 Example 0 
@@ -32,10 +33,13 @@ class page_chapter3 extends Page {
         /*======================================
                 Example 1 
         =======================================*/
+
+        /***** break line ******/
+        $this->add('HtmlElement')->setHtml('</br>');
         
     	/***** Button Click Me ******/
         $btn=$this->add('Button');
-        $btn->set('Click Me') // its a button caption
+        $btn->set('Click Me & Success Message') // its a button caption
             ->js('click') // on click event 
             ->univ()
             ->successMessage('Successfull Clicked : ' . rand(1000,99999))
@@ -49,9 +53,9 @@ class page_chapter3 extends Page {
         /***** add tabs 3 tab ******/
     	$tab=$this->add('Tabs');
     	
-    	$tab_opt1=$tab->addTab('Button 1');
-    	$tab_opt2=$tab->addTab('Button 2');
-    	$tab_opt3=$tab->addTab('Button 3');
+    	$tab_opt1=$tab->addTab('Button Example 1');
+    	$tab_opt2=$tab->addTab('Button Example 2');
+    	$tab_opt3=$tab->addTab('Button Example 3');
 
         /***** </br> ******/
         $this->add('View')->setHtml('</br>');
@@ -93,7 +97,7 @@ class page_chapter3 extends Page {
         $v=$tab_opt1->add('View')->set('');
 
         /***** check if value exist or not *****/ 
-        if($_GET['Demo_Msg']) $v->set('Hellow Hi Friends !');
+        if($_GET['Demo_Msg']) $v->set('Hellow Hi Friends ! ' . rand(1000,9999));
 
         /***** button add in tab1 and create object *****/ 
         $btn_demo_msg = $tab_opt1->add('Button')->set('Says Hi !');

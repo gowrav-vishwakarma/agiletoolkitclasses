@@ -17,16 +17,14 @@ class page_chapter5 extends Page {
 
 		parent::init();
 
-	
-        $this->add('H1')->set('Frame Class Options');
-        
-        $btn2=$this->add('Button')->setLabel('Next Chapter6');
-        $btn2->js('click')->univ()->redirect($this->api->url('chapter6'));
+        $this->add('Class_PagePlay')->play(5);
+  
 
 		$frame = $this->add('Frame')
-			->setTitle('Hd Agile toolkit User')			
+			->setTitle('Frame Example Agile toolkit User')			
 			;
 
+		$frame->add('View')->set('Swastik E-Tech Development / Gyan Shila Education Consultancy / Royal Money Fin. Cop.');	
 
 		$this->add('View')->setHtml('
 			<Frameset>

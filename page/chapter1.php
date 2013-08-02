@@ -13,11 +13,7 @@ class page_chapter1 extends Page {
     function init(){
         parent::init();
 
-
-        $this->add('H1')->set('View Class Options');
-
-        $btn2=$this->add('Button')->setLabel('Next Chapter2');
-        $btn2->js('click')->univ()->redirect($this->api->url('chapter2'));
+        $this->add('Class_PagePlay')->play(1,null,true,true,'chapterIndex');
 
         /****** Normal View  *****/
         $this->add('View');
