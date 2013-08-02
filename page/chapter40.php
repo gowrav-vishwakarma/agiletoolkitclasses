@@ -60,11 +60,37 @@ class page_chapter40 extends Page {
 
 		$this->add('Class_PagePlay')->play(40);
 
+    /***** Load Model *****/
 		$m=$this->add('Model_Customer');
-		// $m->tryLoadAny();
+		$m->tryLoadAny();
 
-		// $this->add('Form')->setModel($m,array('photo_id'));
+    /***** Welcome Detail *****/
+    $this->add('H3')->set('Welcome User : ' . $m['name'] . ' - ID is : ' . $m['id']);
 
-		$this->add('CRUD')->setModel($m);
+
+    if($m['photo']){
+        /***** Print/View Images *****/
+        $img=$this->add('HtmlElement')
+          ->setElement('img')
+          ->setAttr('src',$m['photo'])
+          ->setAttr('height',100)
+          ->setAttr('width',200)
+          ;
+    }else{
+      $this->add('View')->set('Image Not Found !');
+    }      
+   
+    /***** Add Form *****/   
+    $form=$this->add('Form');
+    $form->setModel($m,array('photo_id'));
+    $form->addSubmit('Finally Submit');
+
+    if($form->isSubmitted()){
+        $form->update();
+        $img->js(true)->reload();
+    }
+    
+      
 	}
+
 }
