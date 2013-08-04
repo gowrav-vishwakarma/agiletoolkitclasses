@@ -61,13 +61,25 @@ class page_chapter40 extends Page {
 		$this->add('Class_PagePlay')->play(40);
 
     /***** Load Model *****/
-		$m=$this->add('Model_Customer');
-		$m->tryLoadAny();
+		//$m=$this->add('Model_Customer')->addCondition('id',1)->load(1);
+    $m=$this->add('Model_Customer')->addCondition('id','1')->load('1');
 
     /***** Welcome Detail *****/
     $this->add('H3')->set('Welcome User : ' . $m['name'] . ' - ID is : ' . $m['id']);
 
 
+    /***** Add Form *****/   
+    $form=$this->add('Form');
+    $form->setModel($m,array('photo_id'));
+    $form->addSubmit('Finally Submit');
+
+    if($form->isSubmitted()){
+        
+        $form->update();
+        $form->js(true,$img->js(true)->reload())->univ()->successMessage('Image Successfully Updated !')->execute();
+    
+    }
+   
     if($m['photo']){
         /***** Print/View Images *****/
         $img=$this->add('HtmlElement')
@@ -80,15 +92,6 @@ class page_chapter40 extends Page {
       $this->add('View')->set('Image Not Found !');
     }      
    
-    /***** Add Form *****/   
-    $form=$this->add('Form');
-    $form->setModel($m,array('photo_id'));
-    $form->addSubmit('Finally Submit');
-
-    if($form->isSubmitted()){
-        $form->update();
-        $img->js(true)->reload();
-    }
     
       
 	}

@@ -2,10 +2,10 @@
 -- version 3.4.10.1deb1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 25, 2013 at 10:46 AM
+-- Host: 127.0.0.1:3306
+-- Generation Time: Aug 04, 2013 at 01:19 PM
 -- Server version: 5.5.31
--- PHP Version: 5.3.10-1ubuntu3.6
+-- PHP Version: 5.3.10-1ubuntu3.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -82,16 +82,81 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `is_active` tinyint(4) DEFAULT NULL,
   `dob` datetime DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
+  `photo_id` varchar(2555) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `name`, `address`, `mobile`, `is_active`, `dob`, `email`) VALUES
-(1, 'customer 1', NULL, NULL, 1, '2013-06-14 00:00:00', NULL),
-(2, 'customer 2\n', NULL, NULL, 1, '2013-06-14 00:00:00', NULL);
+INSERT INTO `customer` (`id`, `name`, `address`, `mobile`, `is_active`, `dob`, `email`, `photo_id`) VALUES
+(1, 'Rahul Vishnoi', 'Bhilwara', '9251615091', 1, '2013-08-02 00:00:00', 'cool_vishnoi@yahoo.co.in', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `filestore_file`
+--
+
+CREATE TABLE IF NOT EXISTS `filestore_file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `filestore_type_id` int(11) NOT NULL DEFAULT '0',
+  `filestore_volume_id` int(11) NOT NULL DEFAULT '0',
+  `filename` varchar(255) NOT NULL DEFAULT '',
+  `original_filename` varchar(255) DEFAULT NULL,
+  `filesize` int(11) NOT NULL DEFAULT '0',
+  `filenum` int(11) NOT NULL DEFAULT '0',
+  `deleted` enum('Y','N') NOT NULL DEFAULT 'N',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `filestore_image`
+--
+
+CREATE TABLE IF NOT EXISTS `filestore_image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `original_file_id` int(11) NOT NULL DEFAULT '0',
+  `thumb_file_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `filestore_type`
+--
+
+CREATE TABLE IF NOT EXISTS `filestore_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `mime_type` varchar(64) NOT NULL DEFAULT '',
+  `extension` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `filestore_volume`
+--
+
+CREATE TABLE IF NOT EXISTS `filestore_volume` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL DEFAULT '',
+  `dirname` varchar(255) NOT NULL DEFAULT '',
+  `total_space` bigint(20) NOT NULL DEFAULT '0',
+  `used_space` bigint(20) NOT NULL DEFAULT '0',
+  `stored_files_cnt` int(11) NOT NULL DEFAULT '0',
+  `enabled` enum('Y','N') DEFAULT 'Y',
+  `last_filenum` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -281,44 +346,3 @@ INSERT INTO `project` (`id`, `name`, `description`, `is_active`, `start_date`, `
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-CREATE TABLE IF NOT EXISTS `filestore_file` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `filestore_type_id` int(11) NOT NULL DEFAULT '0',
-  `filestore_volume_id` int(11) NOT NULL DEFAULT '0',
-  `filename` varchar(255) NOT NULL DEFAULT '',
-  `original_filename` varchar(255) DEFAULT NULL,
-  `filesize` int(11) NOT NULL DEFAULT '0',
-  `filenum` int(11) NOT NULL DEFAULT '0',
-  `deleted` enum('Y','N') NOT NULL DEFAULT 'N',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
-
-CREATE TABLE IF NOT EXISTS `filestore_image` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `original_file_id` int(11) NOT NULL DEFAULT '0',
-  `thumb_file_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
-
-CREATE TABLE IF NOT EXISTS `filestore_type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `mime_type` varchar(64) NOT NULL DEFAULT '',
-  `extension` varchar(5) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
-
-CREATE TABLE IF NOT EXISTS `filestore_volume` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) NOT NULL DEFAULT '',
-  `dirname` varchar(255) NOT NULL DEFAULT '',
-  `total_space` bigint(20) NOT NULL DEFAULT '0',
-  `used_space` bigint(20) NOT NULL DEFAULT '0',
-  `stored_files_cnt` int(11) NOT NULL DEFAULT '0',
-  `enabled` enum('Y','N') DEFAULT 'Y',
-  `last_filenum` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
