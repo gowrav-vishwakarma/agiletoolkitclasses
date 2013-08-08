@@ -231,6 +231,10 @@ class Model_File extends \Model_Table {
         return $this;
     }
     function beforeDelete(){
+
+        // change permission  
+        chmod($this->getPath(), 0777);
         unlink($this->getPath());
-    }
+
+   }
 }

@@ -29,6 +29,7 @@ class Model_Customer extends Model_Table {
 
 		//$this->add('filestore/Field_Image','photo_id')->type('image');
 		$this->add("filestore/Field_Image","customer_photo_id")->type('image');
+		$this->add("filestore/Field_Image","p_photo_id")->type('image');
 
 		/***** 
 			$this->addField('field_name')

@@ -138,5 +138,6 @@ class Model_Image extends Model_File {
     function beforeDelete(){
         parent::beforeDelete();
         $this->ref('thumb_file_id')->tryDelete();
+        
     }
 }

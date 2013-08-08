@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 04, 2013 at 01:19 PM
+-- Generation Time: Aug 08, 2013 at 08:00 PM
 -- Server version: 5.5.31
 -- PHP Version: 5.3.10-1ubuntu3.7
 
@@ -82,16 +82,17 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `is_active` tinyint(4) DEFAULT NULL,
   `dob` datetime DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `photo_id` varchar(2555) NOT NULL,
+  `customer_photo_id` varchar(2555) NOT NULL,
+  `p_photo_id` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=201 ;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `name`, `address`, `mobile`, `is_active`, `dob`, `email`, `photo_id`) VALUES
-(1, 'Rahul Vishnoi', 'Bhilwara', '9251615091', 1, '2013-08-02 00:00:00', 'cool_vishnoi@yahoo.co.in', '');
+INSERT INTO `customer` (`id`, `name`, `address`, `mobile`, `is_active`, `dob`, `email`, `customer_photo_id`, `p_photo_id`) VALUES
+(200, 'Rahul Vishnoi', 'Bhilwara', '9251615091', 1, '2013-08-02 00:00:00', 'cool_vishnoi@yahoo.co.in', '72', '66');
 
 -- --------------------------------------------------------
 
@@ -109,7 +110,16 @@ CREATE TABLE IF NOT EXISTS `filestore_file` (
   `filenum` int(11) NOT NULL DEFAULT '0',
   `deleted` enum('Y','N') NOT NULL DEFAULT 'N',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=73 ;
+
+--
+-- Dumping data for table `filestore_file`
+--
+
+INSERT INTO `filestore_file` (`id`, `filestore_type_id`, `filestore_volume_id`, `filename`, `original_filename`, `filesize`, `filenum`, `deleted`) VALUES
+(66, 2, 1, '0/20130808194028__1004793-10151701294913592-1939367954-n.jpg', '1004793_10151701294913592_1939367954_n.jpg', 56619, 0, ''),
+(71, 2, 1, '0/20130808195624_1_thumb-20189-483101398450919-631559963-n.jpg', 'thumb_20189_483101398450919_631559963_n.jpg', 0, 0, ''),
+(72, 2, 1, '0/20130808195624__20189-483101398450919-631559963-n.jpg', '20189_483101398450919_631559963_n.jpg', 59566, 0, '');
 
 -- --------------------------------------------------------
 
@@ -123,7 +133,19 @@ CREATE TABLE IF NOT EXISTS `filestore_image` (
   `original_file_id` int(11) NOT NULL DEFAULT '0',
   `thumb_file_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+
+--
+-- Dumping data for table `filestore_image`
+--
+
+INSERT INTO `filestore_image` (`id`, `name`, `original_file_id`, `thumb_file_id`) VALUES
+(31, NULL, 62, 61),
+(32, NULL, 64, 63),
+(33, NULL, 65, 65),
+(34, NULL, 68, 67),
+(35, NULL, 70, 69),
+(36, NULL, 72, 71);
 
 -- --------------------------------------------------------
 
@@ -137,7 +159,17 @@ CREATE TABLE IF NOT EXISTS `filestore_type` (
   `mime_type` varchar(64) NOT NULL DEFAULT '',
   `extension` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `filestore_type`
+--
+
+INSERT INTO `filestore_type` (`id`, `name`, `mime_type`, `extension`) VALUES
+(1, 'png', 'image/png', 'png'),
+(2, 'jpeg', 'image/jpeg', 'jpeg'),
+(3, 'gif', 'image/gif', 'gif'),
+(4, 'jpg', 'image/jpg', 'jpg');
 
 -- --------------------------------------------------------
 
@@ -156,7 +188,14 @@ CREATE TABLE IF NOT EXISTS `filestore_volume` (
   `last_filenum` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `filestore_volume`
+--
+
+INSERT INTO `filestore_volume` (`id`, `name`, `dirname`, `total_space`, `used_space`, `stored_files_cnt`, `enabled`, `last_filenum`) VALUES
+(1, 'upload', 'upload', 1000000000, 0, 124, 'Y', NULL);
 
 -- --------------------------------------------------------
 
@@ -315,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   `customer_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_project_customer` (`customer_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `project`
@@ -341,7 +380,8 @@ INSERT INTO `project` (`id`, `name`, `description`, `is_active`, `start_date`, `
 (21, 'grgergerg', '654564', 1, '2013-06-17 00:00:00', '', 2),
 (22, 'Mnaoj', 'jfhdjfh', 1, '2013-06-18 00:00:00', '41', 2),
 (23, 'Rahul Vishnoi', 'Hellow', 1, '2013-06-17 00:00:00', '', 2),
-(24, 'Ajax', 'CSS', 1, '2013-06-17 00:00:00', '34', 2);
+(24, 'Ajax', 'CSS', 1, '2013-06-17 00:00:00', '34', 2),
+(25, 'asdsad', 'asdasdas', 1, '2013-08-04 00:00:00', '', 200);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

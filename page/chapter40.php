@@ -5,7 +5,20 @@
 								Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
 		*//*
 		=================================================================================================
-		Note: field add in Model "customer" photo_id
+		
+    ********** ********** **********
+    Required :  atk4-addons/filestore/lib/Model/File.php
+    Function : Over Write
+
+        function beforeDelete(){
+
+          // change permission  
+          chmod($this->getPath(), 0777);
+          unlink($this->getPath());
+        }
+    ********** ********** **********
+
+    Note: field add in Model "customer" photo_id
 
 		Create Table 4. folder->/sql/chapter40.sql import in database
 
@@ -81,14 +94,14 @@ class page_chapter40 extends Page {
 
     /***** Welcome Detail *****/
     $this->add('H3')->set('Welcome User : ' . $m['name'] . ' - ID is : ' . $m['id']);
-   
+ 
     if($m['customer_photo_id']){
         /***** Print/View Images *****/
         $img=$this->add('HtmlElement')
           ->setElement('img')
           ->setAttr('src',$m['customer_photo'])
-          ->setAttr('height',400)
-          ->setAttr('width',400)
+          // ->setAttr('height',400)
+          // ->setAttr('width',400)
           ;
     }else{
       $this->add('View')->set('Image Not Found !');
