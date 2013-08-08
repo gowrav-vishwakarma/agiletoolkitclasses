@@ -27,8 +27,9 @@ class Model_Customer extends Model_Table {
 		$this->addField('dob')->type('date')->defaultValue(date('Y-m-d'));
 		$this->addField('is_active')->type('boolean')->defaultValue(true);
 
-		$this->add('filestore/Field_Image','photo_id')->type('image');
-	
+		//$this->add('filestore/Field_Image','photo_id')->type('image');
+		$this->add("filestore/Field_Image","customer_photo_id")->type('image');
+
 		/***** 
 			$this->addField('field_name')
 

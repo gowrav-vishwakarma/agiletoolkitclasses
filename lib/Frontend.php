@@ -59,7 +59,10 @@ class Frontend extends ApiFrontend {
         $title_array=$this->add('Class_Title')->title_array();
         for($row=1;$row<=count($title_array);$row++){    
             $m->addMenuItem('chapter' . $row,'Chapter ' . $row);    
-        }       
+        }     
+
+        $m->addClass('atk-menu atk-menu-vertical');
+
             
 
         $this->addLayout('UserMenu');

@@ -38,7 +38,9 @@ class page_chapterIndex extends Page {
         
         for($loop=1;$loop<=$available_index;$loop++){
 
-            $this->add('View',null,'title_chapter' . $loop)->set($title[$loop]);
+            $this->add('View',null,'title_chapter' . $loop)->setHtml('<a href="?page=chapter'. $loop .'">'.$title[$loop] . '</a>')
+                // ->addClass('section-heading')
+            ;
 
             /***** GOTO Direct Chapter:$loop ******/
             $this->add('Button',null,'chapter' . $loop)

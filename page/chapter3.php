@@ -16,7 +16,6 @@ class page_chapter3 extends Page {
 
         $this->add('Class_PagePlay')->play(3);
 
-
         /*======================================
                 Example 0 
         =======================================*/

@@ -179,9 +179,5 @@ class page_chapter1 extends Page {
         $tab->addTab('Tab 2')->set("this is my tab 2");
 
 
-        $btn2=$this->add('Button')->setLabel('Next Chapter2');
-        $btn2->js('click')->univ()->redirect($this->api->url('chapter2'));
-
-
 	}
 }	

@@ -28,7 +28,7 @@ class Model_Project extends Model_Table{
 		$this->addField('start_date')->type('date')->defaultValue(date('Y-m-d'));
 		$this->addField('progress')->type('int');
 
-		 $this->hasMany('Complaints','project_id');
+		$this->hasMany('Complaints','project_id');
 
 	}
 	

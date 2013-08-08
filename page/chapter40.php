@@ -5,9 +5,9 @@
 								Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
 		*//*
 		=================================================================================================
-		field add in Model "customer" photo_id
+		Note: field add in Model "customer" photo_id
 
-		Create Table 4.
+		Create Table 4. folder->/sql/chapter40.sql import in database
 
 CREATE TABLE IF NOT EXISTS `filestore_file` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -37,6 +37,14 @@ CREATE TABLE IF NOT EXISTS `filestore_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
+
+INSERT INTO `filestore_type` (`id`, `name`, `mime_type`, `extension`) VALUES
+(1, 'png', 'image/png', 'png'),
+(2, 'jpeg', 'image/jpeg', 'jpeg'),
+(3, 'gif', 'image/gif', 'gif'),
+(4, 'jpg', 'image/jpg', 'jpg');
+
+
 CREATE TABLE IF NOT EXISTS `filestore_volume` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL DEFAULT '',
@@ -50,6 +58,10 @@ CREATE TABLE IF NOT EXISTS `filestore_volume` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
+
+INSERT INTO `filestore_volume` (`id`, `name`, `dirname`, `total_space`, `used_space`, `stored_files_cnt`, `enabled`, `last_filenum`) VALUES
+(1, 'upload', 'upload', 1000000000, 0, 52, 'Y', NULL);
+
 	=================================================================================================
 	*/
 
@@ -62,38 +74,38 @@ class page_chapter40 extends Page {
 
     /***** Load Model *****/
 		//$m=$this->add('Model_Customer')->addCondition('id',1)->load(1);
-    $m=$this->add('Model_Customer')->addCondition('id','1')->load('1');
+    $m=$this->add('Model_Customer')
+      ->addCondition('id','200')
+      ->load('200')
+      ;
 
     /***** Welcome Detail *****/
     $this->add('H3')->set('Welcome User : ' . $m['name'] . ' - ID is : ' . $m['id']);
-
-
-    /***** Add Form *****/   
-    $form=$this->add('Form');
-    $form->setModel($m,array('photo_id'));
-    $form->addSubmit('Finally Submit');
-
-    if($form->isSubmitted()){
-        
-        $form->update();
-        $form->js(true,$img->js(true)->reload())->univ()->successMessage('Image Successfully Updated !')->execute();
-    
-    }
    
-    if($m['photo']){
+    if($m['customer_photo_id']){
         /***** Print/View Images *****/
         $img=$this->add('HtmlElement')
           ->setElement('img')
-          ->setAttr('src',$m['photo'])
-          ->setAttr('height',100)
-          ->setAttr('width',200)
+          ->setAttr('src',$m['customer_photo'])
+          ->setAttr('height',400)
+          ->setAttr('width',400)
           ;
     }else{
       $this->add('View')->set('Image Not Found !');
-    }      
+    }
    
+      /***** Add Form *****/   
+      $form=$this->add('Form');
+      $form->setModel($m,array('customer_photo_id'));
+      $form->addSubmit('Submit');
+
+      if($form->isSubmitted()){
+       
+          $form->update();
+          $this->js(true,$img->js(true)->reload())->univ()->successMessage('Image Successfully Updated !')->execute();
     
-      
-	}
+      }
+    
+    }      
 
 }
