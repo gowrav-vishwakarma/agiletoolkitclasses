@@ -43,8 +43,9 @@ class Class_Title extends AbstractObject{
             '37'=>'Chapter 37 ::=> SMLite object',
             '38'=>'Chapter 38 ::=> AuthTest',
             '39'=>'Chapter 39 ::=> gridorder/Controller_GridOrder',
-            '40'=>'Chapter 40 ::=> Upload Image with database record entry'
-     
+            '40'=>'Chapter 40 ::=> Upload Image with database record entry',
+            '41'=>'Chapter 41 ::=> Show saved image -> thumb image '
+          
             );
 
 		 return $title; 
