@@ -221,7 +221,7 @@ class Model_File extends \Model_Table {
         default:
             throw new Exception_Filestore('Incorrect import mode specified: '.$this->import_mode);
         }
-        chmod($destination, $this->api->getConfig('filestore/chmod',0660));
+        chmod($destination, $this->api->getConfig('filestore/chmod',0777));
         clearstatcache();
         $this->set('filesize',$f=filesize($destination));
         $this->set('deleted',false);
@@ -232,8 +232,10 @@ class Model_File extends \Model_Table {
     }
     function beforeDelete(){
 
-        // change permission  
+        // change permission 
+        /***** it is required for pemanent delete *****/ 
         chmod($this->getPath(), 0777);
+
         unlink($this->getPath());
 
    }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 08, 2013 at 08:00 PM
+-- Generation Time: Aug 11, 2013 at 11:47 AM
 -- Server version: 5.5.31
 -- PHP Version: 5.3.10-1ubuntu3.7
 
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
 --
 
 INSERT INTO `customer` (`id`, `name`, `address`, `mobile`, `is_active`, `dob`, `email`, `customer_photo_id`, `p_photo_id`) VALUES
-(200, 'Rahul Vishnoi', 'Bhilwara', '9251615091', 1, '2013-08-02 00:00:00', 'cool_vishnoi@yahoo.co.in', '72', '66');
+(200, 'Rahul Vishnoi', NULL, NULL, NULL, NULL, NULL, '150', '');
 
 -- --------------------------------------------------------
 
@@ -110,16 +110,15 @@ CREATE TABLE IF NOT EXISTS `filestore_file` (
   `filenum` int(11) NOT NULL DEFAULT '0',
   `deleted` enum('Y','N') NOT NULL DEFAULT 'N',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=73 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=151 ;
 
 --
 -- Dumping data for table `filestore_file`
 --
 
 INSERT INTO `filestore_file` (`id`, `filestore_type_id`, `filestore_volume_id`, `filename`, `original_filename`, `filesize`, `filenum`, `deleted`) VALUES
-(66, 2, 1, '0/20130808194028__1004793-10151701294913592-1939367954-n.jpg', '1004793_10151701294913592_1939367954_n.jpg', 56619, 0, ''),
-(71, 2, 1, '0/20130808195624_1_thumb-20189-483101398450919-631559963-n.jpg', 'thumb_20189_483101398450919_631559963_n.jpg', 0, 0, ''),
-(72, 2, 1, '0/20130808195624__20189-483101398450919-631559963-n.jpg', '20189_483101398450919_631559963_n.jpg', 59566, 0, '');
+(149, 2, 1, '0/20130811114454_1_thumb-photo0461.jpg', 'thumb_Photo0461.jpg', 0, 0, ''),
+(150, 2, 1, '0/20130811114454__photo0461.jpg', 'Photo0461.jpg', 164315, 0, '');
 
 -- --------------------------------------------------------
 
@@ -133,19 +132,25 @@ CREATE TABLE IF NOT EXISTS `filestore_image` (
   `original_file_id` int(11) NOT NULL DEFAULT '0',
   `thumb_file_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=76 ;
 
 --
 -- Dumping data for table `filestore_image`
 --
 
 INSERT INTO `filestore_image` (`id`, `name`, `original_file_id`, `thumb_file_id`) VALUES
-(31, NULL, 62, 61),
-(32, NULL, 64, 63),
-(33, NULL, 65, 65),
-(34, NULL, 68, 67),
-(35, NULL, 70, 69),
-(36, NULL, 72, 71);
+(64, NULL, 128, 127),
+(65, NULL, 130, 129),
+(66, NULL, 132, 131),
+(67, NULL, 134, 133),
+(68, NULL, 136, 135),
+(69, NULL, 138, 137),
+(70, NULL, 140, 139),
+(71, NULL, 142, 141),
+(72, NULL, 144, 143),
+(73, NULL, 146, 145),
+(74, NULL, 148, 147),
+(75, NULL, 150, 149);
 
 -- --------------------------------------------------------
 
@@ -195,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `filestore_volume` (
 --
 
 INSERT INTO `filestore_volume` (`id`, `name`, `dirname`, `total_space`, `used_space`, `stored_files_cnt`, `enabled`, `last_filenum`) VALUES
-(1, 'upload', 'upload', 1000000000, 0, 124, 'Y', NULL);
+(1, 'upload', 'upload', 1000000000, 0, 202, 'Y', NULL);
 
 -- --------------------------------------------------------
 

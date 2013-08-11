@@ -2,8 +2,10 @@
 namespace filestore;
 class Model_Image extends Model_File {
     //protected $entity_code='filestore_image';
-    public $default_thumb_width=140;
-    public $default_thumb_height=140;
+   
+
+    public $default_thumb_height;
+    public $default_thumb_width;
 
     // Temporarily, to be replaced in 4.1 to use Model_File
     // TODO: replace with file_model_name and no auto-prefixing with filestore/
@@ -11,6 +13,19 @@ class Model_Image extends Model_File {
 
     function init(){
         parent::init();
+
+        /***** Condition for set Image Size Mannually *****/    
+        if($_SESSION['image_size']!=''){
+            $str=$_SESSION['image_size'];
+            $arr=explode(",",$str);
+            $this->default_thumb_height=trim($arr[0]);
+            $this->default_thumb_width=trim($arr[1]);
+            $_SESSION['image_size']='';
+        }else{
+            $this->default_thumb_height=110;
+            $this->default_thumb_width=110;
+
+        }
 
         $this->i=$this->join('filestore_image.original_file_id');
 
