@@ -1,23 +1,26 @@
 <?php
-	/**
-						     	  		  Example of Show Thumb Image 
-										'********************************'
-								Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
-		*//*
-		=================================================================================================
+  /**
+                          Example of Show Thumb Image 
+                    '********************************'
+                Created by : Rahul Vishnoi (cool_vishnoi@yahoo.co.in)
+    *//*
+    =================================================================================================
       add Model File /Model/Photo.php
     =================================================================================================
-	*/
+  */
 
 class page_chapter41 extends Page {
 
-	function init(){
-		parent::init();
+  function init(){
+    parent::init();
+    
+    /***** required session for set thumb image size *****/
+    $_SESSION['image_size']='100,100';
 
-		$this->add('Class_PagePlay')->play(41,null,true,true,null,'cheatsheet');
+    $this->add('Class_PagePlay')->play(41,null,true,true,null,'cheatsheet');
 
     /***** Load Model *****/
-		//$m=$this->add('Model_Customer')->addCondition('id',1)->load(1);
+    //$m=$this->add('Model_Customer')->addCondition('id',1)->load(1);
     $m=$this->add('Model_Customer')
       ->addCondition('id','200')
       ->load('200')
@@ -52,7 +55,6 @@ class page_chapter41 extends Page {
       $this->add('View')->set('Image Not Found !');
     }
 
-      $_SESSION['image_size']='200,200';
 
       /***** Add Form *****/   
       $form=$this->add('Form');

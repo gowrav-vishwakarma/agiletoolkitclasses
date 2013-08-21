@@ -7,7 +7,7 @@ class Class_PagePlay extends AbstractView{
 
 	function play($page_no=2,$page_tital=null,$display_previous=true,$display_next=true,$page_prev=null,$page_next=null){
 
-	$chapter_no=$page_no;
+	   $chapter_no=$page_no;
 
          /***** import titles from lib/class/title.php *****/
         $title_array=$this->add('Class_Title')->title_array();

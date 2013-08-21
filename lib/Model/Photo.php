@@ -9,8 +9,6 @@ example :
 	$_SESSION['image_size']='110,110';
 */
 
-
-
 class Model_Photo extends Model_Table{
 
 	var $table='filestore_file';

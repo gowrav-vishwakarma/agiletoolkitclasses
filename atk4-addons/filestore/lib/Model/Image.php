@@ -15,16 +15,16 @@ class Model_Image extends Model_File {
         parent::init();
 
         /***** Condition for set Image Size Mannually *****/    
-        if($_SESSION['image_size']!=''){
+        if($_SESSION['image_size']=='' or $_SESSION['image_size']==null or isset($_SESSION['image_size'])==false)
+        {
+            $this->default_thumb_height=150;
+            $this->default_thumb_width=150;
+        }else{
             $str=$_SESSION['image_size'];
             $arr=explode(",",$str);
             $this->default_thumb_height=trim($arr[0]);
             $this->default_thumb_width=trim($arr[1]);
             $_SESSION['image_size']='';
-        }else{
-            $this->default_thumb_height=110;
-            $this->default_thumb_width=110;
-
         }
 
         $this->i=$this->join('filestore_image.original_file_id');
